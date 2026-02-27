@@ -392,7 +392,237 @@
         </div>
       </section>
 
-      <!-- Убрал длинный пустой блок, чтобы контент был на один экран -->
+      <!-- БЛОК 2: СИСТЕМА НАДЁЖНОСТИ -->
+<section class="reliability-section container">
+    <!-- Заголовок -->
+    <h2 class="section-title">НЕ ПРОСТО ПОДБОР, А <span class="italic">СИСТЕМА НАДЁЖНОСТИ</span></h2>
+
+    <!-- Три колонки с преимуществами -->
+    <div class="reliability-grid">
+        <!-- Карточка 1 -->
+        <div class="reliability-card">
+            <div class="reliability-emoji">🛡️</div>
+            <h3 class="reliability-card-title">ГАРАНТИЯ 3+ МЕСЯЦА</h3>
+            <p class="reliability-card-text">При любом гарантийном случае мы немедленно заменяем двигатель на другой. Все работы за наш счёт.</p>
+        </div>
+
+        <!-- Карточка 2 -->
+        <div class="reliability-card">
+            <div class="reliability-emoji">📋</div>
+            <h3 class="reliability-card-title">ДОКУМЕНТЫ «ПОД КЛЮЧ»</h3>
+            <p class="reliability-card-text">Полный пакет для ГИБДД от одного юр.лица. Легально и прозрачно.</p>
+        </div>
+
+        <!-- Карточка 3 -->
+        <div class="reliability-card">
+            <div class="reliability-emoji">🔬</div>
+            <h3 class="reliability-card-title">ДИАГНОСТИКА ДО ПОКУПКИ</h3>
+            <p class="reliability-card-text">Каждый двигатель проходит жесткую проверку: эндоскопия цилиндров, пневмотест, вскрытие поддона.</p>
+        </div>
+    </div>
+
+    <!-- Широкая карточка-плашка с цифрами -->
+    <div class="stats-card">
+        <div class="stats-grid">
+            <!-- Статистика 1 -->
+            <div class="stat-item">
+                <div class="stat-number">10+</div>
+                <div class="stat-desc">лет на рынке контрактных ДВС</div>
+            </div>
+            <!-- Статистика 2 -->
+            <div class="stat-item">
+                <div class="stat-number">37</div>
+                <div class="stat-desc">проверенных поставщиков в РФ и СНГ</div>
+            </div>
+            <!-- Статистика 3 -->
+            <div class="stat-item">
+                <div class="stat-number">12</div>
+                <div class="stat-desc">мастеров по установке в двух техцентрах Москвы</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Финальный текст-пояснение -->
+    <p class="responsibility-text">
+        <span class="bold">Мы не просто продаем двигатели. Мы берём на себя полную ответственность за подбор, установку, документы и дальнейшую эксплуатацию.</span> Ваше спокойствие — наша работа.
+    </p>
+</section>
+
+<style>
+/* ===== БЛОК 2: СИСТЕМА НАДЁЖНОСТИ ===== */
+.reliability-section {
+    margin-top: 80px; /* отступ сверху */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* на всю высоту экрана */
+    justify-content: center; /* центрируем содержимое по вертикали */
+}
+
+/* Заголовок блока */
+.reliability-section .section-title {
+    font-family: "Inter", sans-serif;
+    font-weight: 800; /* Extra Bold */
+    font-size: 57px; /* как у главного заголовка */
+    color: #F9E19E;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 60px;
+    text-align: left;
+    max-width: 100%;
+}
+
+.reliability-section .section-title .italic {
+    font-style: italic;
+    color: #F9E19E; /* тот же цвет, только курсив */
+}
+
+/* Сетка из трех колонок */
+.reliability-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    margin-bottom: 60px;
+}
+
+/* Карточка преимущества */
+.reliability-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reliability-emoji {
+    font-size: 64px; /* крупная иконка */
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.reliability-card-title {
+    font-family: "Inter", sans-serif;
+    font-size: 22px;
+    font-weight: 700; /* bold */
+    color: #C47140; /* подзаголовочный цвет */
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
+
+.reliability-card-text {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #F9E19E;
+    line-height: 1.6;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+/* Широкая карточка-плашка (как карточки в первом блоке) */
+.stats-card {
+    background: rgba(5, 11, 23, 0.8);
+    border: 1px solid #E96832;
+    border-radius: 32px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    padding: 48px 40px;
+    backdrop-filter: blur(2px);
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+/* Сетка внутри плашки */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stat-number {
+    font-family: "Inter", sans-serif;
+    font-weight: 800; /* Extra Bold */
+    font-size: 42px;
+    color: #F9E19E;
+    line-height: 1.1;
+}
+
+.stat-desc {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #F9E19E;
+    line-height: 1.5;
+    max-width: 220px;
+    margin: 0 auto;
+}
+
+/* Финальный текст */
+.responsibility-text {
+    font-family: "Inter", sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: #F9E19E;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+.responsibility-text .bold {
+    font-weight: 700; /* жирное начертание */
+}
+
+/* Адаптивность для блока */
+@media (max-width: 992px) {
+    .reliability-section .section-title {
+        font-size: 44px;
+    }
+    
+    .reliability-grid {
+        gap: 30px;
+    }
+    
+    .stats-grid {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .reliability-section {
+        min-height: auto; /* на мобилках не прижимаем к экрану */
+        margin-top: 60px;
+    }
+    
+    .reliability-section .section-title {
+        font-size: 32px;
+        text-align: center;
+    }
+    
+    .reliability-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .stats-card {
+        padding: 40px 20px;
+    }
+    
+    .responsibility-text {
+        font-size: 18px;
+    }
+}
+</style>
     </main>
   </body>
 </html>
