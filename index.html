@@ -34,7 +34,7 @@
         width: 100%;
         height: 110px;
         background-color: #050b17;
-        border-bottom: 2px solid #e96832;
+        border-bottom: 1px solid #e96832;
         z-index: 1000;
         display: flex;
         align-items: center;
@@ -146,35 +146,49 @@
 
       /* ===== КАРТОЧКИ ===== */
       .cards-section {
-        margin: 30px 0; /* Уменьшил отступ */
+        margin: 60px 0; /* отступ сверху и снизу от карточек */
       }
 
       .cards-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 60px;
+        gap: 60px; /* отступ между карточками */
       }
 
       .card {
-        background: rgba(5, 11, 23, 0.8);
+        background: rgba(5, 11, 23, 0.8); /* 050B17 с прозрачностью 80% */
         border: 1px solid #e96832;
         border-radius: 32px;
-        /* Более мягкая тень: убрал spread, уменьшил размытие */
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        box-shadow: 2px 6px 12px 7px rgba(44, 41, 58, 0.3); /* 2C293A spread -2 x6 y6 blur 12.7, я интерпретировал как тень */
         padding: 40px 20px;
         text-align: center;
         display: flex;
         align-items: center;
         justify-content: center;
-        backdrop-filter: blur(2px);
+        backdrop-filter: blur(
+          2px
+        ); /* легкое размытие, если фон будет с картинкой */
       }
 
       .card p {
         font-family: "Inter", sans-serif;
         font-size: 18px;
-        font-weight: 700;
-        color: #f9e19e; /* Одинаковый цвет */
+        font-weight: 700; /* bold */
+        color: #f9e19e;
         line-height: 1.5;
+      }
+
+      .card p span {
+        display: block;
+        font-size: 16px;
+        font-weight: 400;
+        color: #c47140;
+        margin-top: 8px;
+      }
+
+      /* Для второй карточки добавим перенос */
+      .card:nth-child(2) p span {
+        font-size: 16px;
       }
 
       /* Второстепенный текст тоже делаем основным цветом и размером */
@@ -339,7 +353,7 @@
     <main class="main-content">
       <section class="hero container">
         <!-- Заголовок одной строкой, без курсива, одним цветом -->
-        <h1>ПРОБЛЕМЫ С ДВИГАТЕЛЕМ?</h1>
+        <h1>ПРОБЛЕМЫ <i>с двигателем?</i></h1>
         <div class="hero-subtitle">
           Подберем и установим надёжный контрактный ДВС с гарантией от 3-х
           месяцев!
