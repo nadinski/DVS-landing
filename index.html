@@ -2,11 +2,13 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-    <title>Планета ДВС — 3 концепции первого блока</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800;1,900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контрактные двигатели | Conti-Motors</title>
     <style>
-        /* ===== ДИЗАЙН-СИСТЕМА: ИНЖЕНЕРНАЯ ТОЧНОСТЬ ===== */
+        /* Подключаем шрифт Inter */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        /* СБРОС И БАЗОВЫЕ ПЕРЕМЕННЫЕ */
         * {
             margin: 0;
             padding: 0;
@@ -14,478 +16,435 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: radial-gradient(145% 145% at 20% 0%, #092232 0%, #050B17 100%);
-            color: #FFFFFF;
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
+            font-family: "Inter", sans-serif;
+            background-color: #050B17; /* основной фон */
+            color: #F9E19E; /* основной текст (заголовки и меню) */
+            line-height: 1.4;
         }
 
+        /* Основные отступы для контента (как у меню) */
         .container {
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 0 80px;
+            max-width: 100%;
+            padding-left: 6vw;
+            padding-right: 6vw;
         }
 
-        /* ===== ТИПОГРАФИКА ===== */
-        .gradient-heading {
-            font-weight: 900;
-            font-style: italic;
-            background: linear-gradient(180deg, #FDD68D 0%, #C6733C 70%, #E7B06F 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.03em;
-        }
-
-        h1 {
-            font-size: clamp(40px, 6vw, 72px);
-            line-height: 1.1;
-            font-weight: 900;
-            font-style: italic;
-            background: linear-gradient(180deg, #FDD68D 0%, #C6733C 70%, #E7B06F 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.03em;
-            margin-bottom: 24px;
-        }
-
-        .subhead {
-            font-size: 16px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #FDD68D;
-            margin-bottom: 16px;
-        }
-
-        .body-large {
-            font-size: clamp(18px, 2.5vw, 22px);
-            line-height: 1.5;
-            font-weight: 500;
-            color: rgba(255,255,255,0.95);
-            margin-bottom: 32px;
-        }
-
-        /* ===== КНОПКИ ===== */
-        .btn {
-            display: inline-flex;
+        /* ===== ФИКСИРОВАННОЕ МЕНЮ ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 110px;
+            background-color: #050B17;
+            border-bottom: 2px solid #E96832; /* оранжевая полоска */
+            z-index: 1000;
+            display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
-            border-radius: 100px;
-            font-weight: 700;
-            font-size: 18px;
-            padding: 20px 48px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        /* Логотип (заглушка) */
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #F9E19E;
+            letter-spacing: 1px;
+            background: rgba(233, 104, 50, 0.2);
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid #E96832;
+        }
+
+        /* Центральное меню */
+        .nav-menu {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            font-family: "Inter", sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: #F9E19E;
+            text-decoration: none;
+            transition: color 0.2s;
             white-space: nowrap;
         }
 
-        .btn-primary {
-            background: linear-gradient(105deg, #FF9F4B, #E07A3A);
-            color: white;
-            box-shadow: 0 12px 28px rgba(224,122,58,0.35);
-            border: 1px solid rgba(255,215,150,0.3);
+        .nav-menu a:hover {
+            color: #E96832;
         }
 
-        .btn-primary:hover {
-            background: linear-gradient(105deg, #FFAE63, #E88947);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(253,214,141,0.4);
+        /* Контакты справа */
+        .contact-info {
+            text-align: right;
+            font-size: 16px;
+            line-height: 1.4;
         }
 
-        .btn-outline {
-            background: rgba(255,255,255,0.03);
-            backdrop-filter: blur(8px);
-            border: 1.5px solid rgba(253,214,141,0.4);
-            color: #FDD68D;
-        }
-
-        .btn-outline:hover {
-            background: rgba(253,214,141,0.08);
-            border-color: #FDD68D;
-            transform: translateY(-3px);
-        }
-
-        /* ===== ЛОГОТИП ===== */
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-image {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: linear-gradient(145deg, #FDD68D, #E7B06F);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: 900;
-            color: #050B17;
-        }
-
-        .logo-text {
-            font-size: 24px;
-            font-weight: 900;
-            font-style: italic;
-            background: linear-gradient(145deg, #FDD68D, #E7B06F);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.03em;
-        }
-
-        /* ===== ФЛАГИ ===== */
-        .flags {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-        }
-
-        .flag {
-            font-size: 32px;
-            line-height: 1;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
-        }
-
-        /* ===== КАРТОЧКИ ===== */
-        .stat-card {
-            background: linear-gradient(145deg, rgba(18,58,86,0.8), rgba(9,34,50,0.95));
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(253,214,141,0.2);
-            border-radius: 40px;
-            padding: 40px;
-            box-shadow: 0 24px 48px -16px rgba(0,0,0,0.4);
-        }
-
-        /* ===== ВАРИАНТЫ ===== */
-        .variant-section {
-            padding: 80px 0;
-            border-bottom: 1px solid rgba(253,214,141,0.1);
-        }
-
-        .variant-title {
+        .contact-info .city {
+            color: #C47140; /* подзаголовок */
             font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 4px;
+        }
+
+        .contact-info .phone {
+            font-weight: 600;
+            color: #F9E19E;
+            text-decoration: none;
+        }
+
+        .contact-info .phone:hover {
+            color: #E96832;
+        }
+
+        /* ===== ОСНОВНОЙ КОНТЕНТ (отступ сверху, чтобы не перекрывало меню) ===== */
+        .main-content {
+            margin-top: 110px; /* высота шапки */
+            padding-top: 20px;
+        }
+
+        /* ===== БЛОК ОБЛОЖКИ ===== */
+        .hero {
+            position: relative;
+            min-height: 500px; /* чтобы фоновая картинка не сжималась */
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            padding-top: 120px; /* отступ от меню */
+            padding-bottom: 60px;
+            /* фоновая картинка справа */
+            background-image: url('path-to-your-image.jpg'); /* ЗАМЕНИТЕ НА РЕАЛЬНЫЙ ПУТЬ */
+            background-repeat: no-repeat;
+            background-position: right center;
+            background-size: contain;
+        }
+
+        /* Заголовок H1 */
+        .hero h1 {
+            font-family: "Inter", sans-serif;
+            font-weight: 800; /* Extra Bold */
+            font-size: 57px;
+            color: #F9E19E;
             text-transform: uppercase;
-            color: rgba(253,214,141,0.6);
+            line-height: 1.1;
+            max-width: 800px;
+            margin-bottom: 20px; /* отступ от подзаголовка */
+        }
+
+        .hero h1 i {
+            font-style: italic;
+            font-weight: 800;
+            color: #E96832; /* можно и цветом выделить, но пока просто курсив */
+        }
+
+        .hero-subtitle {
+            font-family: "Inter", sans-serif;
+            font-size: 26px;
+            font-weight: 400;
+            color: #C47140; /* подзаголовок */
+            max-width: 700px;
             margin-bottom: 40px;
         }
 
-        /* ===== АДАПТИВНОСТЬ ===== */
-        @media (max-width: 1200px) {
-            .container { padding: 0 48px; }
+        /* ===== КАРТОЧКИ ===== */
+        .cards-section {
+            margin: 60px 0; /* отступ сверху и снизу от карточек */
         }
 
-        @media (max-width: 1024px) {
-            .hero-grid-1,
-            .hero-grid-2,
-            .hero-grid-3 {
-                grid-template-columns: 1fr !important;
-                gap: 48px;
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px; /* отступ между карточками */
+        }
+
+        .card {
+            background: rgba(5, 11, 23, 0.8); /* 050B17 с прозрачностью 80% */
+            border: 1px solid #E96832;
+            border-radius: 32px;
+            box-shadow: 2px 6px 12px 7px rgba(44, 41, 58, 0.5); /* 2C293A spread -2 x6 y6 blur 12.7, я интерпретировал как тень */
+            padding: 40px 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(2px); /* легкое размытие, если фон будет с картинкой */
+        }
+
+        .card p {
+            font-family: "Inter", sans-serif;
+            font-size: 18px;
+            font-weight: 700; /* bold */
+            color: #F9E19E;
+            line-height: 1.5;
+        }
+
+        .card p span {
+            display: block;
+            font-size: 16px;
+            font-weight: 400;
+            color: #C47140;
+            margin-top: 8px;
+        }
+
+        /* Для второй карточки добавим перенос */
+        .card:nth-child(2) p span {
+            font-size: 16px;
+        }
+
+        /* ===== НИЖНИЙ БЛОК С ФЛАГАМИ И КНОПКОЙ ===== */
+        .bottom-block {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 80px 0 60px 0; /* отступ сверху 60 как у карточек + еще, пусть будет 80 */
+            position: relative;
+        }
+
+        .flags-and-text {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .flags {
+            display: flex;
+            gap: 16px;
+        }
+
+        .flag-icon {
+            width: 40px;
+            height: 28px;
+            background: #2C2F3A;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #E96832;
+            border: 1px solid #E96832;
+        }
+
+        .country-text {
+            font-size: 16px;
+            font-weight: 400;
+            color: #F9E19E; /* меню-text */
+            line-height: 1.5;
+        }
+
+        .country-text strong {
+            color: #E96832;
+            font-weight: 600;
+        }
+
+        .country-text .year {
+            color: #C47140;
+            font-size: 14px;
+            margin-left: 4px;
+        }
+
+        /* Кнопка с "прилипанием" при скролле */
+        .sticky-button {
+            position: sticky;
+            top: 140px; /* чтобы не прилипала прямо к меню, чуть ниже */
+            z-index: 500;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #D65E2C; /* кнопка */
+            color: #F9E19E;
+            font-family: "Inter", sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            padding: 16px 40px;
+            border-radius: 32px; /* как у карточек */
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            white-space: nowrap;
+            box-shadow: 0 8px 20px rgba(214, 94, 44, 0.3);
+            border: 1px solid rgba(249, 225, 158, 0.3);
+        }
+
+        .btn:hover {
+            background: #E96832;
+            color: #050B17;
+        }
+
+        /* Текст для "Германия, Япония, Франция" отдельно под флагами */
+        .flags-caption {
+            display: flex;
+            flex-direction: column;
+            font-size: 16px;
+            color: #F9E19E;
+        }
+
+        .flags-caption span:first-child {
+            font-weight: 400;
+        }
+
+        .flags-caption span:last-child {
+            color: #C47140;
+            font-size: 15px;
+        }
+
+        /* Адаптивность (начальная) */
+        @media (max-width: 1200px) {
+            .nav-menu {
+                gap: 16px;
             }
-            
-            .btn { white-space: normal; }
+            .hero h1 {
+                font-size: 44px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .header {
+                height: auto;
+                min-height: 110px;
+                padding: 15px 0;
+            }
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .contact-info {
+                text-align: center;
+            }
+            .main-content {
+                margin-top: 160px;
+            }
+            .cards-grid {
+                gap: 30px;
+            }
+            .bottom-block {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 30px;
+            }
+            .sticky-button {
+                position: static;
+                width: 100%;
+            }
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
         }
 
         @media (max-width: 768px) {
-            .container { padding: 0 24px; }
-            .variant-section { padding: 60px 0; }
-            .btn { width: 100%; justify-content: center; }
+            .cards-grid {
+                grid-template-columns: 1fr; /* одна колонка */
+            }
+            .hero h1 {
+                font-size: 38px;
+            }
+            .hero-subtitle {
+                font-size: 20px;
+            }
         }
 
-        @media (max-width: 480px) {
-            .container { padding: 0 20px; }
-            .stat-card { padding: 32px 24px; }
-            .flag { font-size: 28px; }
+        /* Декоративная полоска под меню уже есть, и все ок */
+        .flag-icon {
+            background-size: cover;
         }
 
-        /* ===== НАВИГАЦИЯ (ОБЩАЯ) ===== */
-        .navbar {
-            padding: 24px 0;
-            border-bottom: 1px solid rgba(253,214,141,0.15);
-            background: rgba(5,11,23,0.8);
-            backdrop-filter: blur(16px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 48px;
-        }
-
-        .nav-link {
-            color: rgba(255,255,255,0.85);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: color 0.2s;
-        }
-
-        .nav-link:hover {
-            color: #FDD68D;
-        }
-
-        .phone {
-            font-weight: 800;
-            font-size: 18px;
-            background: linear-gradient(145deg, #FDD68D, #E7B06F);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        @media (max-width: 1100px) {
-            .nav-links { display: none; }
-        }
+        /* Можно добавить конкретные заглушки флагов позже */
     </style>
 </head>
 <body>
-    <!-- НАВИГАЦИЯ (ОБЩАЯ ДЛЯ ВСЕХ ВАРИАНТОВ) -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <div class="logo-wrapper">
-                <!-- КРУГЛЫЙ ЛОГОТИП: logo dvs 1.1.png -->
-                <div class="logo-image">
-                    <img src="logo dvs 1.1.png" alt="Планета ДВС" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-                </div>
-                <span class="logo-text">Планета ДВС</span>
-            </div>
-            <div class="nav-links">
-                <a href="#" class="nav-link">о нас</a>
-                <a href="#" class="nav-link">как мы работаем</a>
-                <a href="#" class="nav-link">гарантии</a>
-                <a href="#" class="nav-link">FAQ</a>
-                <a href="#" class="nav-link">контакты</a>
-                <span class="phone">+7 (495) 777-55-44</span>
-            </div>
-        </div>
-    </nav>
+    <!-- ШАПКА (ФИКСИРОВАННАЯ) -->
+    <header class="header">
+        <div class="container header-container">
+            <!-- Логотип -->
+            <div class="logo">CONTI-MOTORS</div>
 
-    <!-- ========================================= -->
-    <!-- ВАРИАНТ 1: АСИММЕТРИЯ / ВИЗУАЛЬНЫЙ АКЦЕНТ -->
-    <!-- ========================================= -->
-    <section class="variant-section">
-        <div class="container">
-            <div class="variant-title">01 / АСИММЕТРИЧНАЯ КОМПОЗИЦИЯ</div>
-            
-            <div style="display: grid; grid-template-columns: 1fr 0.9fr; gap: 60px; align-items: center;">
-                <!-- Левый блок: контент -->
-                <div>
-                    <div class="subhead">КОНТРАКТНЫЕ ДВС</div>
-                    <h1>Устали от проблем с двигателем?</h1>
-                    <p class="body-large">Подберем и установим надёжный контрактный ДВС с гарантией от 3-х месяцев.</p>
-                    
-                    <!-- Три фичи в строку -->
-                    <div style="display: flex; gap: 24px; margin-bottom: 32px; flex-wrap: wrap;">
-                        <div style="display: flex; align-items: center; gap: 12px; background: rgba(253,214,141,0.05); padding: 12px 24px; border-radius: 60px;">
-                            <span style="font-size: 24px;">🔧</span>
-                            <span style="font-weight: 600;">Установка «под ключ» за 1-2 дня</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 12px; background: rgba(253,214,141,0.05); padding: 12px 24px; border-radius: 60px;">
-                            <span style="font-size: 24px;">📋</span>
-                            <span style="font-weight: 600;">Полный пакет для ГИБДД</span>
-                        </div>
-                    </div>
+            <!-- Навигация -->
+            <ul class="nav-menu">
+                <li><a href="#">о нас</a></li>
+                <li><a href="#">как мы работаем</a></li>
+                <li><a href="#">заказать расчёт</a></li>
+                <li><a href="#">гарантии</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">контакты</a></li>
+            </ul>
 
-                    <!-- ТОЛЬКО ФЛАГИ, БЕЗ ТЕКСТА -->
-                    <div style="display: flex; align-items: center; gap: 32px; margin-bottom: 40px;">
-                        <div class="flags">
-                            <span class="flag">🇩🇪</span>
-                            <span class="flag">🇯🇵</span>
-                            <span class="flag">🇫🇷</span>
-                        </div>
-                        <span style="color: rgba(255,255,255,0.7); font-size: 17px;">От 2005 г.в.</span>
-                    </div>
-
-                    <button class="btn btn-primary">
-                        <span>⚡</span> Рассчитать стоимость двигателя
-                    </button>
-                </div>
-
-                <!-- Правый блок: карточка статистики -->
-                <div class="stat-card" style="padding: 48px;">
-                    <div style="font-size: 64px; margin-bottom: 24px;">⏳</div>
-                    <div class="subhead" style="color: #FDD68D; margin-bottom: 8px;">10 ЛЕТ ЭКСПЕРТИЗЫ</div>
-                    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 24px;">
-                        <span style="font-size: 80px; font-weight: 900; background: linear-gradient(145deg, #FDD68D, #E7B06F); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">3 720</span>
-                        <span style="font-size: 24px; color: rgba(255,255,255,0.7);">двигателей</span>
-                    </div>
-                    <p style="font-size: 18px; color: rgba(255,255,255,0.8);">37 проверенных поставщиков<br>12 мастеров в двух техцентрах</p>
-                </div>
+            <!-- Контакты справа -->
+            <div class="contact-info">
+                <div class="city">Москва и Московская область</div>
+                <a href="tel:+79639246709" class="phone">+7 (963) 924 67 09</a>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- ========================================= -->
-    <!-- ВАРИАНТ 2: ЦЕНТРИРОВАННЫЙ / ПРЕМИАЛЬНЫЙ   -->
-    <!-- ========================================= -->
-    <section class="variant-section">
-        <div class="container">
-            <div class="variant-title">02 / ЦЕНТРИРОВАННАЯ КОМПОЗИЦИЯ</div>
-            
-            <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-                <div style="display: flex; justify-content: center; margin-bottom: 24px;">
-                    <div class="flags">
-                        <span class="flag">🇩🇪</span>
-                        <span class="flag">🇯🇵</span>
-                        <span class="flag">🇫🇷</span>
-                    </div>
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <main class="main-content">
+        <!-- БЛОК HERO (обложка) -->
+        <section class="hero container">
+            <h1>Проблемы <i>с двигателем?</i></h1>
+            <div class="hero-subtitle">
+                Подберем и установим надёжный контрактный ДВС с гарантией от 3-х месяцев!
+            </div>
+        </section>
+
+        <!-- БЛОК КАРТОЧЕК (3 в ряд) -->
+        <section class="cards-section container">
+            <div class="cards-grid">
+                <!-- Карточка 1 -->
+                <div class="card">
+                    <p>Установка «под ключ»<br><span>за 1-3 дня</span></p>
                 </div>
-                
-                <div class="subhead" style="text-align: center;">КОНТРАКТНЫЕ ДВИГАТЕЛИ</div>
-                <h1 style="text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">Устали от проблем с двигателем?</h1>
-                <p class="body-large" style="text-align: center; max-width: 700px; margin-left: auto; margin-right: auto; margin-bottom: 40px;">
-                    Подберем и установим надёжный контрактный ДВС с гарантией от 3-х месяцев.
-                </p>
-
-                <!-- Три фичи в ряд по центру -->
-                <div style="display: flex; gap: 24px; justify-content: center; margin-bottom: 40px; flex-wrap: wrap;">
-                    <div style="display: flex; align-items: center; gap: 12px; background: rgba(253,214,141,0.05); padding: 12px 28px; border-radius: 60px;">
-                        <span style="font-size: 24px;">🔧</span>
-                        <span style="font-weight: 600;">Установка за 1-2 дня</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 12px; background: rgba(253,214,141,0.05); padding: 12px 28px; border-radius: 60px;">
-                        <span style="font-size: 24px;">📋</span>
-                        <span style="font-weight: 600;">Пакет для ГИБДД</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 12px; background: rgba(253,214,141,0.05); padding: 12px 28px; border-radius: 60px;">
-                        <span style="font-size: 24px;">🛡️</span>
-                        <span style="font-weight: 600;">Гарантия 3+ месяца</span>
-                    </div>
+                <!-- Карточка 2 -->
+                <div class="card">
+                    <p>Профессиональный подбор<br><span>от экспертов</span></p>
                 </div>
-
-                <div style="display: flex; gap: 24px; justify-content: center; margin-bottom: 48px; flex-wrap: wrap;">
-                    <span style="color: rgba(255,255,255,0.7); font-size: 18px;">Германия, Япония, Франция</span>
-                    <span style="color: rgba(255,255,255,0.5);">|</span>
-                    <span style="color: rgba(255,255,255,0.7); font-size: 18px;">От 2005 г.в.</span>
+                <!-- Карточка 3 -->
+                <div class="card">
+                    <p>Полный пакет документов<br><span>для ГИБДД</span></p>
                 </div>
+            </div>
+        </section>
 
-                <div style="display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;">
-                    <button class="btn btn-primary" style="padding: 22px 56px;">
-                        Рассчитать стоимость
-                    </button>
-                    <button class="btn btn-outline" style="padding: 22px 56px;">
-                        Каталог двигателей
-                    </button>
+        <!-- НИЖНИЙ БЛОК (ФЛАГИ + ТЕКСТ + КНОПКА) -->
+        <section class="container bottom-block">
+            <div class="flags-and-text">
+                <!-- Заглушки флагов (замените на img src) -->
+                <div class="flags">
+                    <div class="flag-icon" title="Германия">DE</div>
+                    <div class="flag-icon" title="Япония">JP</div>
+                    <div class="flag-icon" title="Франция">FR</div>
+                </div>
+                <!-- Текст под флагами (в две строчки) -->
+                <div class="flags-caption">
+                    <span>Германия, Япония, Франция</span>
+                    <span>От 2005 г.в.</span>
                 </div>
             </div>
 
-            <!-- Нижняя статистика в две колонки -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 80px;">
-                <div class="stat-card" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 40px;">
-                    <span style="font-size: 64px; font-weight: 900; background: linear-gradient(145deg, #FDD68D, #E7B06F); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">10+</span>
-                    <p style="font-size: 20px; font-weight: 600; margin-top: 16px; color: white;">лет на рынке</p>
-                </div>
-                <div class="stat-card" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 40px;">
-                    <span style="font-size: 64px; font-weight: 900; background: linear-gradient(145deg, #FDD68D, #E7B06F); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">3 720</span>
-                    <p style="font-size: 20px; font-weight: 600; margin-top: 16px; color: white;">двигателей установлено</p>
-                </div>
+            <!-- Кнопка sticky (прилипающая при скролле) -->
+            <div class="sticky-button">
+                <a href="#" class="btn">Рассчитать стоимость двигателя</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ========================================= -->
-    <!-- ВАРИАНТ 3: ДВУХКОЛОНКА / ИНЖЕНЕРНЫЙ СТИЛЬ -->
-    <!-- ========================================= -->
-    <section class="variant-section">
-        <div class="container">
-            <div class="variant-title">03 / ИНЖЕНЕРНАЯ СТРОГОСТЬ</div>
-            
-            <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 80px; align-items: start;">
-                <!-- Левая колонка -->
-                <div>
-                    <div class="subhead">ПРЕМИАЛЬНЫЙ СЕРВИС</div>
-                    <h1 style="font-size: clamp(40px, 5vw, 64px);">Устали от проблем с двигателем?</h1>
-                    
-                    <div style="margin: 40px 0 32px;">
-                        <div style="display: flex; align-items: baseline; gap: 32px; margin-bottom: 32px;">
-                            <span style="font-size: 20px; font-weight: 700; color: #FDD68D;">СТРАНЫ:</span>
-                            <div class="flags" style="gap: 24px;">
-                                <span class="flag" style="font-size: 40px;">🇩🇪</span>
-                                <span class="flag" style="font-size: 40px;">🇯🇵</span>
-                                <span class="flag" style="font-size: 40px;">🇫🇷</span>
-                            </div>
-                        </div>
-                        <p style="font-size: 20px; color: rgba(255,255,255,0.9); margin-bottom: 16px;">от 2005 года выпуска</p>
-                    </div>
+        <!-- Дополнительный контент, чтобы увидеть прилипание кнопки -->
+        <div style="height: 800px; background: transparent; pointer-events: none;"></div>
+    </main>
 
-                    <!-- Ключевые преимущества списком -->
-                    <div style="margin-bottom: 48px;">
-                        <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 20px;">
-                            <span style="font-size: 28px;">🔧</span>
-                            <span style="font-size: 18px; font-weight: 600;">Установка «под ключ» за 1-2 дня</span>
-                        </div>
-                        <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 20px;">
-                            <span style="font-size: 28px;">📋</span>
-                            <span style="font-size: 18px; font-weight: 600;">Бесплатный профессиональный подбор</span>
-                        </div>
-                        <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 20px;">
-                            <span style="font-size: 28px;">🛂</span>
-                            <span style="font-size: 18px; font-weight: 600;">Полный пакет документов для ГИБДД</span>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-primary" style="padding: 22px 52px;">
-                        Рассчитать стоимость двигателя
-                    </button>
-                </div>
-
-                <!-- Правая колонка — строгая карточка -->
-                <div class="stat-card" style="padding: 56px 40px;">
-                    <span style="font-size: 48px; margin-bottom: 32px; display: block;">⚙️</span>
-                    
-                    <div style="margin-bottom: 40px;">
-                        <p style="font-size: 15px; letter-spacing: 3px; color: #FDD68D; margin-bottom: 16px;">ЭКСПЕРТИЗА</p>
-                        <p style="font-size: 44px; font-weight: 900; background: linear-gradient(145deg, #FDD68D, #E7B06F); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px;">10 лет</p>
-                        <p style="font-size: 20px; color: white;">на рынке контрактных ДВС</p>
-                    </div>
-                    
-                    <div style="border-top: 1px solid rgba(253,214,141,0.2); padding-top: 32px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 24px;">
-                            <span style="color: rgba(255,255,255,0.7);">Поставщиков</span>
-                            <span style="font-weight: 800; color: #FDD68D; font-size: 28px;">37</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <span style="color: rgba(255,255,255,0.7);">Мастеров</span>
-                            <span style="font-weight: 800; color: #FDD68D; font-size: 28px;">12</span>
-                        </div>
-                    </div>
-
-                    <p style="margin-top: 32px; font-style: italic; color: #FDD68D;">«Инженерная точность в каждом моторе»</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ПРИМЕЧАНИЕ ДЛЯ GITHUB -->
-    <div style="padding: 40px 0 80px; text-align: center; opacity: 0.6;">
-        <div class="container">
-            <p style="color: rgba(255,255,255,0.5);">Три концепции первого блока. Логотип: logo dvs 1.1.png (круглый). Флаги — только иконки, без подписей.</p>
-            <p style="color: rgba(255,255,255,0.5); margin-top: 16px;">Адаптивность: мобильные, планшеты, десктоп — идеальная сетка.</p>
-        </div>
-    </div>
-
-    <script>
-        // Для GitHub Pages: корректный путь к логотипу
-        document.querySelectorAll('.logo-image img').forEach(img => {
-            img.src = 'logo dvs 1.1.png';
-            img.alt = 'Планета ДВС';
-        });
-    </script>
+    <!-- Если кнопка должна открывать попап, позже добавим JS -->
 </body>
 </html>
