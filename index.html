@@ -1,450 +1,384 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Контрактные двигатели | Conti-Motors</title>
     <style>
-        /* Подключаем шрифт Inter */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
-        /* СБРОС И БАЗОВЫЕ ПЕРЕМЕННЫЕ */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: "Inter", sans-serif;
-            background-color: #050B17; /* основной фон */
-            color: #F9E19E; /* основной текст (заголовки и меню) */
-            line-height: 1.4;
-        }
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #050b17;
+        color: #f9e19e;
+        line-height: 1.4;
+      }
 
-        /* Основные отступы для контента (как у меню) */
-        .container {
-            max-width: 100%;
-            padding-left: 6vw;
-            padding-right: 6vw;
-        }
+      .container {
+        max-width: 100%;
+        padding-left: 6vw;
+        padding-right: 6vw;
+      }
 
-        /* ===== ФИКСИРОВАННОЕ МЕНЮ ===== */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 110px;
-            background-color: #050B17;
-            border-bottom: 2px solid #E96832; /* оранжевая полоска */
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-        }
+      /* ===== МЕНЮ ===== */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 110px;
+        background-color: #050b17;
+        border-bottom: 2px solid #e96832;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+      }
 
-        .header-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-        }
+      .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
 
-        /* Логотип (заглушка) */
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            color: #F9E19E;
-            letter-spacing: 1px;
-            background: rgba(233, 104, 50, 0.2);
-            padding: 8px 16px;
-            border-radius: 8px;
-            border: 1px solid #E96832;
-        }
+      .logo {
+        font-size: 24px;
+        font-weight: 800;
+        color: #f9e19e;
+        letter-spacing: 1px;
+        background: rgba(233, 104, 50, 0.2);
+        padding: 8px 16px;
+        border-radius: 8px;
+        border: 1px solid #e96832;
+      }
 
-        /* Центральное меню */
-        .nav-menu {
-            display: flex;
-            gap: 28px;
-            list-style: none;
-        }
+      .nav-menu {
+        display: flex;
+        gap: 28px;
+        list-style: none;
+      }
 
-        .nav-menu a {
-            font-family: "Inter", sans-serif;
-            font-size: 16px;
-            font-weight: 400;
-            color: #F9E19E;
-            text-decoration: none;
-            transition: color 0.2s;
-            white-space: nowrap;
-        }
+      .nav-menu a {
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        color: #f9e19e;
+        text-decoration: none;
+        transition: color 0.2s;
+        white-space: nowrap;
+      }
 
-        .nav-menu a:hover {
-            color: #E96832;
-        }
+      .nav-menu a:hover {
+        color: #e96832;
+      }
 
-        /* Контакты справа */
-        .contact-info {
-            text-align: right;
-            font-size: 16px;
-            line-height: 1.4;
-        }
+      .contact-info {
+        text-align: right;
+        font-size: 16px;
+        line-height: 1.4;
+      }
 
-        .contact-info .city {
-            color: #C47140; /* подзаголовок */
-            font-size: 14px;
-        }
+      .contact-info .city {
+        color: #c47140;
+        font-size: 14px;
+      }
 
-        .contact-info .phone {
-            font-weight: 600;
-            color: #F9E19E;
-            text-decoration: none;
-        }
+      .contact-info .phone {
+        font-weight: 600;
+        color: #f9e19e;
+        text-decoration: none;
+      }
 
-        .contact-info .phone:hover {
-            color: #E96832;
-        }
+      .contact-info .phone:hover {
+        color: #e96832;
+      }
 
-        /* ===== ОСНОВНОЙ КОНТЕНТ (отступ сверху, чтобы не перекрывало меню) ===== */
-        .main-content {
-            margin-top: 110px; /* высота шапки */
-            padding-top: 20px;
-        }
+      /* ===== ОСНОВНОЙ КОНТЕНТ ===== */
+      .main-content {
+        margin-top: 110px;
+        min-height: calc(
+          100vh - 110px
+        ); /* Занимает всю высоту экрана минус меню */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Центрируем контент по вертикали */
+      }
 
-        /* ===== БЛОК ОБЛОЖКИ ===== */
-        .hero {
-            position: relative;
-            min-height: 500px; /* чтобы фоновая картинка не сжималась */
-            display: flex;
-            align-items: flex-start;
-            flex-direction: column;
-            padding-top: 120px; /* отступ от меню */
-            padding-bottom: 60px;
-            /* фоновая картинка справа */
-            background-image: url('path-to-your-image.jpg'); /* ЗАМЕНИТЕ НА РЕАЛЬНЫЙ ПУТЬ */
-            background-repeat: no-repeat;
-            background-position: right center;
-            background-size: contain;
-        }
+      /* ===== БЛОК ОБЛОЖКИ ===== */
+      .hero {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        padding-top: 40px; /* Уменьшил отступ, чтобы всё влезло */
+        padding-bottom: 20px;
+        background-image: url("path-to-your-image.jpg");
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: contain;
+      }
 
-        /* Заголовок H1 */
+      .hero h1 {
+        font-family: "Inter", sans-serif;
+        font-weight: 800;
+        font-size: 57px;
+        color: #f9e19e; /* Один цвет */
+        text-transform: uppercase;
+        line-height: 1.1;
+        max-width: 800px;
+        margin-bottom: 20px;
+      }
+
+      .hero-subtitle {
+        font-family: "Inter", sans-serif;
+        font-size: 26px;
+        font-weight: 400;
+        color: #c47140;
+        max-width: 700px;
+        margin-bottom: 30px; /* Уменьшил отступ */
+      }
+
+      /* ===== КАРТОЧКИ ===== */
+      .cards-section {
+        margin: 30px 0; /* Уменьшил отступ */
+      }
+
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 60px;
+      }
+
+      .card {
+        background: rgba(5, 11, 23, 0.8);
+        border: 1px solid #e96832;
+        border-radius: 32px;
+        /* Более мягкая тень: убрал spread, уменьшил размытие */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        padding: 40px 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(2px);
+      }
+
+      .card p {
+        font-family: "Inter", sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        color: #f9e19e; /* Одинаковый цвет */
+        line-height: 1.5;
+      }
+
+      /* Второстепенный текст тоже делаем основным цветом и размером */
+      .card p span {
+        display: block;
+        font-size: 18px; /* Такой же, как основной */
+        font-weight: 700; /* Bold */
+        color: #f9e19e; /* Одинаковый цвет */
+        margin-top: 4px;
+      }
+
+      /* ===== НИЖНИЙ БЛОК ===== */
+      .bottom-block {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 30px 0 20px 0; /* Уменьшил отступы */
+        position: relative;
+      }
+
+      .flags-and-text {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .flags {
+        display: flex;
+        gap: 20px;
+      }
+
+      /* Флаги-смайлики */
+      .flag-emoji {
+        font-size: 40px; /* Размер эмодзи */
+        line-height: 1;
+        filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.3));
+      }
+
+      .flags-caption {
+        display: flex;
+        flex-direction: column;
+        font-size: 16px;
+        color: #f9e19e;
+      }
+
+      .flags-caption span:first-child {
+        font-weight: 400;
+      }
+
+      .flags-caption span:last-child {
+        color: #c47140;
+        font-size: 15px;
+      }
+
+      /* Кнопка (без ховера) */
+      .sticky-button {
+        position: sticky;
+        top: 140px;
+        z-index: 500;
+      }
+
+      .btn {
+        display: inline-block;
+        background: #d65e2c;
+        color: #f9e19e;
+        font-family: "Inter", sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        padding: 16px 40px;
+        border-radius: 32px;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        white-space: nowrap;
+        box-shadow: 0 8px 20px rgba(214, 94, 44, 0.3);
+        border: 1px solid rgba(249, 225, 158, 0.3);
+        transition: none; /* Убрал все переходы */
+      }
+
+      /* Полностью убираем ховер */
+      .btn:hover {
+        background: #d65e2c; /* Тот же цвет, без изменений */
+        color: #f9e19e;
+      }
+
+      /* Адаптивность (начальная) */
+      @media (max-width: 1200px) {
         .hero h1 {
-            font-family: "Inter", sans-serif;
-            font-weight: 800; /* Extra Bold */
-            font-size: 57px;
-            color: #F9E19E;
-            text-transform: uppercase;
-            line-height: 1.1;
-            max-width: 800px;
-            margin-bottom: 20px; /* отступ от подзаголовка */
+          font-size: 48px;
         }
+      }
 
-        .hero h1 i {
-            font-style: italic;
-            font-weight: 800;
-            color: #E96832; /* можно и цветом выделить, но пока просто курсив */
+      @media (max-width: 992px) {
+        .header {
+          height: auto;
+          min-height: 110px;
+          padding: 15px 0;
         }
-
-        .hero-subtitle {
-            font-family: "Inter", sans-serif;
-            font-size: 26px;
-            font-weight: 400;
-            color: #C47140; /* подзаголовок */
-            max-width: 700px;
-            margin-bottom: 40px;
+        .header-container {
+          flex-direction: column;
+          gap: 15px;
         }
-
-        /* ===== КАРТОЧКИ ===== */
-        .cards-section {
-            margin: 60px 0; /* отступ сверху и снизу от карточек */
+        .nav-menu {
+          flex-wrap: wrap;
+          justify-content: center;
         }
-
+        .main-content {
+          margin-top: 160px;
+          justify-content: flex-start; /* На мобилках не центрируем */
+        }
         .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 60px; /* отступ между карточками */
+          gap: 30px;
         }
+      }
 
-        .card {
-            background: rgba(5, 11, 23, 0.8); /* 050B17 с прозрачностью 80% */
-            border: 1px solid #E96832;
-            border-radius: 32px;
-            box-shadow: 2px 6px 12px 7px rgba(44, 41, 58, 0.5); /* 2C293A spread -2 x6 y6 blur 12.7, я интерпретировал как тень */
-            padding: 40px 20px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(2px); /* легкое размытие, если фон будет с картинкой */
+      @media (max-width: 768px) {
+        .cards-grid {
+          grid-template-columns: 1fr;
         }
-
-        .card p {
-            font-family: "Inter", sans-serif;
-            font-size: 18px;
-            font-weight: 700; /* bold */
-            color: #F9E19E;
-            line-height: 1.5;
+        .hero h1 {
+          font-size: 38px;
         }
-
-        .card p span {
-            display: block;
-            font-size: 16px;
-            font-weight: 400;
-            color: #C47140;
-            margin-top: 8px;
+        .hero-subtitle {
+          font-size: 20px;
         }
-
-        /* Для второй карточки добавим перенос */
-        .card:nth-child(2) p span {
-            font-size: 16px;
-        }
-
-        /* ===== НИЖНИЙ БЛОК С ФЛАГАМИ И КНОПКОЙ ===== */
         .bottom-block {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 80px 0 60px 0; /* отступ сверху 60 как у карточек + еще, пусть будет 80 */
-            position: relative;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 30px;
         }
-
-        .flags-and-text {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-
-        .flags {
-            display: flex;
-            gap: 16px;
-        }
-
-        .flag-icon {
-            width: 40px;
-            height: 28px;
-            background: #2C2F3A;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            color: #E96832;
-            border: 1px solid #E96832;
-        }
-
-        .country-text {
-            font-size: 16px;
-            font-weight: 400;
-            color: #F9E19E; /* меню-text */
-            line-height: 1.5;
-        }
-
-        .country-text strong {
-            color: #E96832;
-            font-weight: 600;
-        }
-
-        .country-text .year {
-            color: #C47140;
-            font-size: 14px;
-            margin-left: 4px;
-        }
-
-        /* Кнопка с "прилипанием" при скролле */
         .sticky-button {
-            position: sticky;
-            top: 140px; /* чтобы не прилипала прямо к меню, чуть ниже */
-            z-index: 500;
+          position: static;
+          width: 100%;
         }
-
         .btn {
-            display: inline-block;
-            background: #D65E2C; /* кнопка */
-            color: #F9E19E;
-            font-family: "Inter", sans-serif;
-            font-size: 18px;
-            font-weight: 700;
-            padding: 16px 40px;
-            border-radius: 32px; /* как у карточек */
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.1s;
-            white-space: nowrap;
-            box-shadow: 0 8px 20px rgba(214, 94, 44, 0.3);
-            border: 1px solid rgba(249, 225, 158, 0.3);
+          width: 100%;
+          text-align: center;
         }
-
-        .btn:hover {
-            background: #E96832;
-            color: #050B17;
-        }
-
-        /* Текст для "Германия, Япония, Франция" отдельно под флагами */
-        .flags-caption {
-            display: flex;
-            flex-direction: column;
-            font-size: 16px;
-            color: #F9E19E;
-        }
-
-        .flags-caption span:first-child {
-            font-weight: 400;
-        }
-
-        .flags-caption span:last-child {
-            color: #C47140;
-            font-size: 15px;
-        }
-
-        /* Адаптивность (начальная) */
-        @media (max-width: 1200px) {
-            .nav-menu {
-                gap: 16px;
-            }
-            .hero h1 {
-                font-size: 44px;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .header {
-                height: auto;
-                min-height: 110px;
-                padding: 15px 0;
-            }
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .nav-menu {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .contact-info {
-                text-align: center;
-            }
-            .main-content {
-                margin-top: 160px;
-            }
-            .cards-grid {
-                gap: 30px;
-            }
-            .bottom-block {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 30px;
-            }
-            .sticky-button {
-                position: static;
-                width: 100%;
-            }
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .cards-grid {
-                grid-template-columns: 1fr; /* одна колонка */
-            }
-            .hero h1 {
-                font-size: 38px;
-            }
-            .hero-subtitle {
-                font-size: 20px;
-            }
-        }
-
-        /* Декоративная полоска под меню уже есть, и все ок */
-        .flag-icon {
-            background-size: cover;
-        }
-
-        /* Можно добавить конкретные заглушки флагов позже */
+      }
     </style>
-</head>
-<body>
-    <!-- ШАПКА (ФИКСИРОВАННАЯ) -->
+  </head>
+  <body>
     <header class="header">
-        <div class="container header-container">
-            <!-- Логотип -->
-            <div class="logo">CONTI-MOTORS</div>
-
-            <!-- Навигация -->
-            <ul class="nav-menu">
-                <li><a href="#">о нас</a></li>
-                <li><a href="#">как мы работаем</a></li>
-                <li><a href="#">заказать расчёт</a></li>
-                <li><a href="#">гарантии</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">контакты</a></li>
-            </ul>
-
-            <!-- Контакты справа -->
-            <div class="contact-info">
-                <div class="city">Москва и Московская область</div>
-                <a href="tel:+79639246709" class="phone">+7 (963) 924 67 09</a>
-            </div>
+      <div class="container header-container">
+        <div class="logo">CONTI-MOTORS</div>
+        <ul class="nav-menu">
+          <li><a href="#">о нас</a></li>
+          <li><a href="#">как мы работаем</a></li>
+          <li><a href="#">заказать расчёт</a></li>
+          <li><a href="#">гарантии</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">контакты</a></li>
+        </ul>
+        <div class="contact-info">
+          <div class="city">Москва и Московская область</div>
+          <a href="tel:+79639246709" class="phone">+7 (963) 924 67 09</a>
         </div>
+      </div>
     </header>
 
-    <!-- ОСНОВНОЙ КОНТЕНТ -->
     <main class="main-content">
-        <!-- БЛОК HERO (обложка) -->
-        <section class="hero container">
-            <h1>Проблемы <i>с двигателем?</i></h1>
-            <div class="hero-subtitle">
-                Подберем и установим надёжный контрактный ДВС с гарантией от 3-х месяцев!
-            </div>
-        </section>
+      <section class="hero container">
+        <!-- Заголовок одной строкой, без курсива, одним цветом -->
+        <h1>ПРОБЛЕМЫ С ДВИГАТЕЛЕМ?</h1>
+        <div class="hero-subtitle">
+          Подберем и установим надёжный контрактный ДВС с гарантией от 3-х
+          месяцев!
+        </div>
+      </section>
 
-        <!-- БЛОК КАРТОЧЕК (3 в ряд) -->
-        <section class="cards-section container">
-            <div class="cards-grid">
-                <!-- Карточка 1 -->
-                <div class="card">
-                    <p>Установка «под ключ»<br><span>за 1-3 дня</span></p>
-                </div>
-                <!-- Карточка 2 -->
-                <div class="card">
-                    <p>Профессиональный подбор<br><span>от экспертов</span></p>
-                </div>
-                <!-- Карточка 3 -->
-                <div class="card">
-                    <p>Полный пакет документов<br><span>для ГИБДД</span></p>
-                </div>
-            </div>
-        </section>
+      <section class="cards-section container">
+        <div class="cards-grid">
+          <div class="card">
+            <p>Установка «под ключ»<br /><span>за 1-3 дня</span></p>
+          </div>
+          <div class="card">
+            <p>Профессиональный подбор<br /><span>от экспертов</span></p>
+          </div>
+          <div class="card">
+            <p>Полный пакет документов<br /><span>для ГИБДД</span></p>
+          </div>
+        </div>
+      </section>
 
-        <!-- НИЖНИЙ БЛОК (ФЛАГИ + ТЕКСТ + КНОПКА) -->
-        <section class="container bottom-block">
-            <div class="flags-and-text">
-                <!-- Заглушки флагов (замените на img src) -->
-                <div class="flags">
-                    <div class="flag-icon" title="Германия">DE</div>
-                    <div class="flag-icon" title="Япония">JP</div>
-                    <div class="flag-icon" title="Франция">FR</div>
-                </div>
-                <!-- Текст под флагами (в две строчки) -->
-                <div class="flags-caption">
-                    <span>Германия, Япония, Франция</span>
-                    <span>От 2005 г.в.</span>
-                </div>
-            </div>
+      <section class="container bottom-block">
+        <div class="flags-and-text">
+          <div class="flags">
+            <span class="flag-emoji">🇩🇪</span>
+            <span class="flag-emoji">🇯🇵</span>
+            <span class="flag-emoji">🇫🇷</span>
+          </div>
+          <div class="flags-caption">
+            <span>Германия, Япония, Франция</span>
+            <span>От 2005 г.в.</span>
+          </div>
+        </div>
 
-            <!-- Кнопка sticky (прилипающая при скролле) -->
-            <div class="sticky-button">
-                <a href="#" class="btn">Рассчитать стоимость двигателя</a>
-            </div>
-        </section>
+        <div class="sticky-button">
+          <a href="#" class="btn">Рассчитать стоимость двигателя</a>
+        </div>
+      </section>
 
-        <!-- Дополнительный контент, чтобы увидеть прилипание кнопки -->
-        <div style="height: 800px; background: transparent; pointer-events: none;"></div>
+      <!-- Убрал длинный пустой блок, чтобы контент был на один экран -->
     </main>
-
-    <!-- Если кнопка должна открывать попап, позже добавим JS -->
-</body>
+  </body>
 </html>
